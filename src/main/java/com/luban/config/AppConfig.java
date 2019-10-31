@@ -1,10 +1,11 @@
 package com.luban.config;
 
-import org.apache.ibatis.logging.log4j.Log4jImpl;
+import com.luban.mapper.UserMapper;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan("com.luban")
+@MapperScan("com.luban.mapper")
 public class AppConfig {
 
     @Bean
@@ -42,10 +44,9 @@ public class AppConfig {
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource, TransactionFactory transactionFactory){
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setTransactionFactory(transactionFactory());
+        sqlSessionFactoryBean.setTransactionFactory(transactionFactory);
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        configuration.setLogImpl(Log4jImpl.class);
-        //configuration.addMapper();
+        //configuration.setLogImpl(Log4jImpl.class);
         sqlSessionFactoryBean.setConfiguration(configuration);
         return sqlSessionFactoryBean;
     }

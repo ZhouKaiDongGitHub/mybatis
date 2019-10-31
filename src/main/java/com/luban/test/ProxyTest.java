@@ -23,6 +23,7 @@ public class ProxyTest {
         try {
             UserDao userDao = sqlSession.getMapper(UserDao.class);
             System.out.println(userDao.queryUserById("1"));
+            System.out.println(userDao.queryUserById("1"));
         }finally {
             sqlSession.close();
         }
