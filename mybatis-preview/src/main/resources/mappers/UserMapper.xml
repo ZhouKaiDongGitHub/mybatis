@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDao">
+    <select id="queryUserById"  resultType="com.luban.mybatis.entity.UserEntity">
+        select
+           tuser.id as id,
+           tuser.user_name as user_name,
+           tuser.password as password,
+           tuser.name as name,
+           tuser.age as age,
+           tuser.birthday as birthday,
+           tuser.sex as sex,
+           tuser.created as created,
+           tuser.updated as updated
+           from
+           tb_user tuser
+           where tuser.id = #{id};
+    </select>
+
+    <select id="queryUserAll" resultType="com.luban.mybatis.entity.UserEntity">
+        select * from tb_user;
+    </select>
+
+    <insert id="insertUser" parameterType="com.luban.mybatis.entity.UserEntity">
+        INSERT INTO tb_user (
+        user_name,
+        password,
+        name,
+        age,
+        sex,
+        birthday,
+        created,
+        updated
+        )
+        VALUES
+        (
+        #{user_name},
+        #{password},
+        #{name},
+        #{age},
+        #{sex},
+        #{birthday},
+        now(),
+        now()
+        );
+    </insert>
+
+    <update id="updateUser" parameterType="com.luban.mybatis.entity.UserEntity">
+        UPDATE tb_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="user_name!=null">user_name = #{user_name},</if>
+            <if test="password!=null">password = #{password},</if>
+            <if test="name!=null">name = #{name},</if>
+            <if test="age!=null">age = #{age},</if>
+            <if test="sex!=null">sex = #{sex},</if>
+            <if test="birthday!=null">birthday = #{birthday},</if>
+            updated = now(),
+        </trim>
+        WHERE
+        (id = #{id});
+    </update>
+
+    <delete id="deleteUser">
+        delete from tb_user where id=#{id}
+    </delete>
+</mapper>

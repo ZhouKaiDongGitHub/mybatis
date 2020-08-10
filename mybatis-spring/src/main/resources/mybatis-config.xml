@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--mybatis核心配置文件
+    配置如下三種配置 1. 事務配置 2.數據源配置  3.Mapper文件-->
+<configuration>
+    <properties>
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test_db"/>
+        <property name="username" value="root"/>
+        <property name="password" value="11111"/>
+    </properties>
+
+    <environments default="development">
+        <environment id="development">
+            <!--事務管理類型 1.JDBC 2.MANAGED-->
+            <transactionManager type="JDBC"/>
+            <!--使用什麼連接池：1.UNPOOLED 2.POOLED 3.JNDI-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mappers/MyMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
+    </mappers>
+
+</configuration>

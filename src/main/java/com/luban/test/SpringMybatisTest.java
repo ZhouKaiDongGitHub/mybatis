@@ -10,6 +10,5 @@ public class SpringMybatisTest  {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         UserMapper userMapper = context.getBean(UserMapper.class);
         System.out.println(userMapper.queryUserList());
-        System.out.println(userMapper.queryUserList());
     }
 }

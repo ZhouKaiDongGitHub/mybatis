@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.luban.kzhou.dao.OrderDao">
+    <select id="getOrderById" resultMap="getOrderByIdMap">
+        SELECT * FROM test_order WHERE ID = #{id}
+    </select>
+    <resultMap id="getOrderByIdMap" type="com.luban.kzhou.entity.OrderEntity" autoMapping="true">
+        <id column="id" property="id"/>
+        <result column="goods_id" property="goodsId"/>
+        <result column="order_number" property="orderNumber"/>
+        <result column="customer_id" property="customerId"/>
+    </resultMap>
+</mapper>

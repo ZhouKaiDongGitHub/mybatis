@@ -2,61 +2,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mybatis-application</artifactId>
+        <groupId>mybatis</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mybatis</groupId>
-    <artifactId>mybatis-application</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>mybatis-preview</module>
-        <module>mybatis-spring</module>
-    </modules>
+    <artifactId>mybatis-preview</artifactId>
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.1.9.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.1.9.RELEASE</version>
-        </dependency>
-        <!--mybatis的核心jar-->
+
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.1</version>
+            <version>3.4.6</version>
         </dependency>
-        <!--mybatis和spring集成jar-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.3.0</version>
+            <version>1.3.2</version>
         </dependency>
+
+        <!--mysql提供給java用於連接mysql數據庫的驅動包：
+            主要包括：Driver Connection PrepareStatement ResultSet的具體實現-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.17</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.28</version>
-        </dependency>
+        <!--日誌門面的架構現在都是slf4j-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.28</version>
+            <version>1.8.0-alpha2</version>
         </dependency>
+
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
     </dependencies>
 
